@@ -474,9 +474,7 @@
       line-height: 1.4;
     }
 
-    /* =========================================================
-       6. [수정됨] AMG Line vs AMG Line+ 와이드 비주얼 설정 (차량 잘림 방지)
-       ========================================================= */
+    /* [6. AMG Line vs AMG Line+ 와이드 비주얼] */
     .compare-container {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -496,7 +494,6 @@
       padding-bottom: 0.4rem;
     }
 
-    /* 와이드 비율(16:9) 및 contain 옵션으로 차량 전체가 보이도록 수정 */
     .compare-box .compare-img {
       width: 100%;
       aspect-ratio: 16 / 9;
@@ -508,7 +505,7 @@
     }
 
     .compare-box .compare-img img {
-      object-fit: contain; /* 잘림 없이 전체 차량 노출 */
+      object-fit: contain;
       background-color: #0d0e11;
     }
 
@@ -926,6 +923,37 @@
       transform: translateY(-1px);
     }
 
+    /* [13. 하단 푸터 / 주의사항 영억] */
+    footer {
+      border-top: 1px solid var(--mb-border);
+      background-color: #050507;
+      padding: 2.5rem 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      font-size: 0.78rem;
+      color: #71767e;
+      line-height: 1.7;
+    }
+
+    .footer-disclaimer {
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-disclaimer p {
+      margin-bottom: 0.2rem;
+    }
+
+    .footer-copyright {
+      color: #52565e;
+      font-size: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 1rem;
+    }
+
     /* =========================================================
        3. 이미지 클릭 확대 모달 (Lightbox Modal)
        ========================================================= */
@@ -1241,7 +1269,7 @@
       </div>
     </section>
 
-    <!-- 6. AMG Line vs AMG Line+ 핵심 상세 비교 (이미지 사이즈 및 비율 수정 반영) -->
+    <!-- 6. AMG Line vs AMG Line+ 핵심 상세 비교 -->
     <section>
       <div class="section-title-wrap">
         <span class="section-tag">COMPARISON</span>
@@ -1711,7 +1739,7 @@
       </div>
     </section>
 
-    <!-- 13. 최하단 상담 안내 & 사전계약 CTA 카드 (카카오톡 오픈프로필 링크 업데이트 반영) -->
+    <!-- 13. 최하단 상담 안내 & 사전계약 CTA 카드 -->
     <section class="consult-card">
       <div class="consult-header">
         <div class="consult-title-row">
@@ -1735,7 +1763,6 @@
         </div>
 
         <div class="consult-btn-group">
-          <!-- 카카오톡 플러스친구 채팅 링크 적용 -->
           <a href="http://pf.kakao.com/_hTPGX/chat" target="_blank" class="c-btn c-btn-kakao">💬 카카오톡 문의</a>
           <a href="tel:01093790999" class="c-btn c-btn-call">전화 문의</a>
           <a href="sms:01093790999" class="c-btn c-btn-sms">문자 문의</a>
@@ -1744,6 +1771,19 @@
     </section>
 
   </main>
+
+  <!-- 14. 하단 주의사항 및 Copyright 영역 -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-disclaimer">
+        <p>※ 예상 가격대·사양·주행거리·전비는 참고용으로 실제 국내 출시 모델 및 옵션 구성과 상이할 수 있습니다.</p>
+        <p>※ 이미지는 참고용이며 실제 차량과 다를 수 있습니다.</p>
+      </div>
+      <div class="footer-copyright">
+        © 2026 Mercedes-Benz Korea. All rights reserved.
+      </div>
+    </div>
+  </footer>
 
   <!-- 이미지 클릭 시 대형 팝업 모달 HTML -->
   <div class="modal-overlay" id="imageModal">
