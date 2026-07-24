@@ -182,17 +182,20 @@
       border-radius: 8px;
     }
 
+    /* 이미지 비율 보정 및 인터랙션 강화 */
     .img-placeholder img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: cover; /* 상자에 찌그러짐 없이 예쁘게 채움 */
+      object-position: center;
       position: absolute;
       top: 0;
       left: 0;
+      transition: transform 0.4s ease, filter 0.4s ease;
     }
 
     /* =========================================================
-       2. 레이아웃 스타일
+       2. 레이아웃 & 호버 효과 디테일
        ========================================================= */
 
     /* [1. 상단] 3분할 디테일 미니 카운터 카드 */
@@ -208,6 +211,17 @@
       border-radius: 8px;
       overflow: hidden;
       border: 1px solid var(--mb-border);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .top-detail-card:hover {
+      border-color: var(--mb-accent);
+      box-shadow: 0 6px 18px rgba(0, 173, 239, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .top-detail-card:hover .img-placeholder img {
+      transform: scale(1.05);
     }
 
     .top-detail-card .img-wrapper {
@@ -288,6 +302,13 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .lineup-card:hover {
+      border-color: var(--mb-accent);
+      box-shadow: 0 8px 20px rgba(0, 173, 239, 0.15);
+      transform: translateY(-3px);
     }
 
     .lineup-card.active-target {
@@ -357,6 +378,17 @@
       border-radius: 8px;
       padding: 0.8rem;
       text-align: center;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .wheel-card:hover {
+      border-color: var(--mb-accent);
+      box-shadow: 0 6px 18px rgba(0, 173, 239, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .wheel-card:hover .wheel-img img {
+      transform: scale(1.06);
     }
 
     .wheel-img {
@@ -397,6 +429,16 @@
       border-radius: 8px;
       padding: 1rem;
       border: 1px solid var(--mb-border);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .cockpit-sub-card:hover {
+      border-color: var(--mb-accent);
+      transform: translateY(-2px);
+    }
+
+    .cockpit-sub-card:hover .img-wrapper img {
+      transform: scale(1.05);
     }
 
     .cockpit-sub-card .img-wrapper {
@@ -544,7 +586,7 @@
       border-radius: 50%;
       border: 2px solid #444;
       cursor: pointer;
-      transition: transform 0.2s, border-color 0.2s;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
     }
 
     .color-chip:hover {
@@ -558,6 +600,16 @@
 
     .color-preview-box {
       height: 170px;
+      border: 1px solid var(--mb-border);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+    }
+
+    /* 색상 미리보기는 차/시트가 전부 잘 보이고 맞게 나오도록 contain 설정 */
+    .color-preview-box img {
+      object-fit: contain;
+      background-color: #0b0c0e;
     }
 
     .color-summary-bar {
@@ -654,6 +706,7 @@
       border-radius: 10px;
       border: 1px solid var(--mb-border);
       margin-bottom: 3.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     }
 
     table {
@@ -676,6 +729,11 @@
 
     td {
       color: var(--mb-silver);
+    }
+
+    table tr:hover td {
+      background-color: rgba(255, 255, 255, 0.02);
+      color: var(--mb-white);
     }
 
     td.check {
@@ -1062,7 +1120,7 @@
       </div>
     </section>
 
-    <!-- 8. 외장 & 내장 색상 커스터마이저 (스크린샷 기준 8종 / 3종 수정 완료) -->
+    <!-- 8. 외장 & 내장 색상 커스터마이저 -->
     <section class="color-section">
       <div class="section-title-wrap">
         <span class="section-tag">COLOR CUSTOMIZATION</span>
