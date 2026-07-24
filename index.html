@@ -474,7 +474,9 @@
       line-height: 1.4;
     }
 
-    /* [6. AMG Line vs AMG Line+ 비교 - 1:1 비율] */
+    /* =========================================================
+       6. [수정됨] AMG Line vs AMG Line+ 와이드 비주얼 설정 (차량 잘림 방지)
+       ========================================================= */
     .compare-container {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -494,12 +496,20 @@
       padding-bottom: 0.4rem;
     }
 
+    /* 와이드 비율(16:9) 및 contain 옵션으로 차량 전체가 보이도록 수정 */
     .compare-box .compare-img {
       width: 100%;
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 16 / 9;
+      max-height: 240px;
       height: auto;
       margin-bottom: 0.8rem;
       border-radius: 6px;
+      background-color: #0d0e11;
+    }
+
+    .compare-box .compare-img img {
+      object-fit: contain; /* 잘림 없이 전체 차량 노출 */
+      background-color: #0d0e11;
     }
 
     .compare-box ul {
@@ -793,9 +803,7 @@
       padding-bottom: 0.5rem;
     }
 
-    /* =========================================================
-       12. 요청사항 반영: 하단 상담 / 사전계약 CTA 배너
-       ========================================================= */
+    /* [12. 하단 상담 / 사전계약 CTA 배너] */
     .consult-card {
       background: linear-gradient(135deg, #141821 0%, #0a0b0d 100%);
       border: 1.5px solid var(--mb-accent);
@@ -1233,7 +1241,7 @@
       </div>
     </section>
 
-    <!-- 6. AMG Line vs AMG Line+ 핵심 상세 비교 -->
+    <!-- 6. AMG Line vs AMG Line+ 핵심 상세 비교 (이미지 사이즈 및 비율 수정 반영) -->
     <section>
       <div class="section-title-wrap">
         <span class="section-tag">COMPARISON</span>
@@ -1703,7 +1711,7 @@
       </div>
     </section>
 
-    <!-- 13. [요청 반영] 최하단 상담 안내 & 사전계약 CTA 카드 -->
+    <!-- 13. 최하단 상담 안내 & 사전계약 CTA 카드 (카카오톡 오픈프로필 링크 업데이트 반영) -->
     <section class="consult-card">
       <div class="consult-header">
         <div class="consult-title-row">
@@ -1727,7 +1735,8 @@
         </div>
 
         <div class="consult-btn-group">
-          <a href="https://open.kakao.com/" target="_blank" class="c-btn c-btn-kakao">💬 카카오톡 문의</a>
+          <!-- 카카오톡 플러스친구 채팅 링크 적용 -->
+          <a href="http://pf.kakao.com/_hTPGX/chat" target="_blank" class="c-btn c-btn-kakao">💬 카카오톡 문의</a>
           <a href="tel:01093790999" class="c-btn c-btn-call">전화 문의</a>
           <a href="sms:01093790999" class="c-btn c-btn-sms">문자 문의</a>
         </div>
