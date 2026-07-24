@@ -91,6 +91,7 @@
       height: 100%;
       object-fit: cover;
       object-position: center 60%;
+      cursor: pointer;
     }
 
     .hero-gradient-overlay {
@@ -107,6 +108,7 @@
         rgba(8, 8, 10, 0.95) 100%
       );
       z-index: 1;
+      pointer-events: none;
     }
 
     .hero-overlay {
@@ -114,6 +116,7 @@
       text-align: center;
       z-index: 2;
       padding: 0 1rem;
+      pointer-events: none;
     }
 
     .hero-overlay h2 {
@@ -180,25 +183,39 @@
       position: relative;
       overflow: hidden;
       border-radius: 8px;
+      cursor: pointer;
     }
 
-    /* 이미지 비율 보정 및 인터랙션 강화 */
     .img-placeholder img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* 상자에 찌그러짐 없이 예쁘게 채움 */
+      object-fit: cover;
       object-position: center;
       position: absolute;
       top: 0;
       left: 0;
-      transition: transform 0.4s ease, filter 0.4s ease;
+      transition: transform 0.4s ease;
+    }
+
+    .img-placeholder:hover::after {
+      content: '🔍 클릭하여 확대';
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.75);
+      color: var(--mb-white);
+      padding: 4px 8px;
+      font-size: 0.7rem;
+      border-radius: 4px;
+      border: 1px solid var(--mb-accent);
+      z-index: 5;
     }
 
     /* =========================================================
-       2. 레이아웃 & 호버 효과 디테일
+       2. 레이아웃 & 디테일
        ========================================================= */
 
-    /* [1. 상단] 3분할 디테일 미니 카운터 카드 */
+    /* [1. 상단] 3분할 카운터 카드 */
     .top-detail-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -211,12 +228,11 @@
       border-radius: 8px;
       overflow: hidden;
       border: 1px solid var(--mb-border);
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, border-color 0.3s ease;
     }
 
     .top-detail-card:hover {
       border-color: var(--mb-accent);
-      box-shadow: 0 6px 18px rgba(0, 173, 239, 0.15);
       transform: translateY(-2px);
     }
 
@@ -237,7 +253,7 @@
       color: var(--mb-white);
     }
 
-    /* [2. 외관] 좌측 대형 이미지 + 우측 텍스트 */
+    /* [2. 외관] */
     .feature-split-row {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
@@ -302,12 +318,11 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, border-color 0.3s ease;
     }
 
     .lineup-card:hover {
       border-color: var(--mb-accent);
-      box-shadow: 0 8px 20px rgba(0, 173, 239, 0.15);
       transform: translateY(-3px);
     }
 
@@ -364,7 +379,7 @@
       font-weight: 500;
     }
 
-    /* [4. 라인업 휠 4종] */
+    /* [4. 라인업 휠 4종 - 1:1 비율] */
     .wheel-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -378,12 +393,11 @@
       border-radius: 8px;
       padding: 0.8rem;
       text-align: center;
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, border-color 0.3s ease;
     }
 
     .wheel-card:hover {
       border-color: var(--mb-accent);
-      box-shadow: 0 6px 18px rgba(0, 173, 239, 0.15);
       transform: translateY(-2px);
     }
 
@@ -392,7 +406,9 @@
     }
 
     .wheel-img {
-      height: 130px;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      height: auto;
       margin-bottom: 0.6rem;
     }
 
@@ -406,7 +422,7 @@
       color: var(--mb-accent);
     }
 
-    /* [5. 디지털 콕핏] 와이드 메인 배너 + 하단 3열 아이템 */
+    /* [5. 디지털 콕핏] */
     .cockpit-section {
       margin-bottom: 4rem;
     }
@@ -458,7 +474,7 @@
       line-height: 1.4;
     }
 
-    /* [6. AMG Line vs AMG Line+ 상세 비교] */
+    /* [6. AMG Line vs AMG Line+ 비교 - 1:1 비율] */
     .compare-container {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -479,7 +495,9 @@
     }
 
     .compare-box .compare-img {
-      height: 150px;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      height: auto;
       margin-bottom: 0.8rem;
       border-radius: 6px;
     }
@@ -503,7 +521,7 @@
       color: var(--mb-accent);
     }
 
-    /* [7. 실내 고급감 & 적재 공간] */
+    /* [7. 실내 공간] */
     .space-section {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -535,7 +553,7 @@
       line-height: 1.6;
     }
 
-    /* [8. 외장 & 내장 색상 커스터마이저] */
+    /* [8. 색상 커스터마이저 - 2:1 비율] */
     .color-section {
       background-color: var(--mb-card-bg);
       border: 1px solid var(--mb-border);
@@ -544,34 +562,21 @@
       margin-bottom: 3.5rem;
     }
 
-    .color-group-container {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    .color-row {
+    .color-controls {
       display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: 1.2rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
       background-color: var(--mb-dark-gray);
       padding: 1.2rem;
       border-radius: 8px;
       border: 1px solid var(--mb-border);
-      align-items: center;
+      margin-bottom: 1.2rem;
     }
 
-    .color-info-left h3 {
+    .color-control-group h3 {
       font-size: 0.95rem;
       color: var(--mb-white);
       margin-bottom: 0.8rem;
-    }
-
-    .selected-color-title {
-      font-size: 0.85rem;
-      color: var(--mb-accent);
-      margin-top: 0.8rem;
-      font-weight: 600;
     }
 
     .color-palette {
@@ -581,8 +586,8 @@
     }
 
     .color-chip {
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       border: 2px solid #444;
       cursor: pointer;
@@ -598,22 +603,51 @@
       box-shadow: 0 0 10px rgba(0, 173, 239, 0.6);
     }
 
+    .selected-color-title {
+      font-size: 0.85rem;
+      color: var(--mb-accent);
+      margin-top: 0.6rem;
+      font-weight: 600;
+    }
+
+    .color-preview-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .preview-wrapper {
+      position: relative;
+    }
+
+    .preview-label {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: rgba(8, 8, 10, 0.8);
+      color: var(--mb-accent);
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(0, 173, 239, 0.3);
+      z-index: 2;
+    }
+
     .color-preview-box {
-      height: 170px;
+      height: 280px;
       border: 1px solid var(--mb-border);
       border-radius: 8px;
       overflow: hidden;
       box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
     }
 
-    /* 색상 미리보기는 차/시트가 전부 잘 보이고 맞게 나오도록 contain 설정 */
     .color-preview-box img {
       object-fit: contain;
       background-color: #0b0c0e;
     }
 
     .color-summary-bar {
-      margin-top: 1.2rem;
       background-color: var(--mb-dark-gray);
       padding: 0.8rem 1rem;
       border-radius: 6px;
@@ -625,7 +659,7 @@
       border: 1px solid var(--mb-border);
     }
 
-    /* [9. 충전 인프라 & 서비스] */
+    /* [9. 충전 인프라] */
     .benefit-section {
       margin-bottom: 3.5rem;
     }
@@ -658,7 +692,7 @@
       line-height: 1.5;
     }
 
-    /* [10. 전 모델 공통 기본 사양] */
+    /* [10. 전 모델 공통 사양] */
     .grid-common {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -759,68 +793,206 @@
       padding-bottom: 0.5rem;
     }
 
-    /* [12. 하단 CTA] */
-    .cta-card {
-      background: linear-gradient(135deg, #1a1c20 0%, #0d0e10 100%);
-      border: 1px solid var(--mb-accent);
-      border-radius: 10px;
-      padding: 1.5rem;
+    /* =========================================================
+       12. 요청사항 반영: 하단 상담 / 사전계약 CTA 배너
+       ========================================================= */
+    .consult-card {
+      background: linear-gradient(135deg, #141821 0%, #0a0b0d 100%);
+      border: 1.5px solid var(--mb-accent);
+      border-radius: 12px;
+      padding: 1.8rem 2rem;
+      margin-top: 2rem;
+      box-shadow: 0 8px 30px rgba(0, 173, 239, 0.15);
+    }
+
+    .consult-header {
+      margin-bottom: 1.2rem;
+    }
+
+    .consult-title-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .consult-title-row h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--mb-white);
+      letter-spacing: -0.3px;
+    }
+
+    .consult-subtext {
+      font-size: 0.88rem;
+      color: var(--mb-silver);
+      line-height: 1.5;
+    }
+
+    .consult-divider {
+      border: none;
+      border-top: 1px dashed var(--mb-border);
+      margin: 1.2rem 0;
+    }
+
+    .consult-bottom-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 1rem;
+      flex-wrap: wrap;
+      gap: 1.2rem;
     }
 
-    .cta-text h3 {
-      font-size: 1.15rem;
-      color: var(--mb-white);
-      margin-bottom: 0.3rem;
+    .advisor-details {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.95rem;
     }
 
-    .cta-text p {
-      font-size: 0.85rem;
+    .advisor-name {
       color: var(--mb-silver);
     }
 
-    .cta-buttons {
-      display: flex;
-      gap: 0.5rem;
+    .advisor-name strong {
+      color: var(--mb-white);
+      font-size: 1.05rem;
     }
 
-    .btn {
-      padding: 0.6rem 1rem;
-      border-radius: 5px;
-      font-size: 0.8rem;
+    .advisor-phone {
+      color: var(--mb-accent);
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      text-decoration: none;
+    }
+
+    .consult-btn-group {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .c-btn {
+      padding: 0.65rem 1.1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
       font-weight: 700;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
     }
 
-    .btn-kakao { background-color: #fee500; color: #191919; }
-    .btn-call { background-color: var(--mb-accent); color: #ffffff; }
+    .c-btn-kakao {
+      background-color: #fee500;
+      color: #191919;
+    }
+    .c-btn-kakao:hover {
+      background-color: #fada0a;
+      transform: translateY(-1px);
+    }
+
+    .c-btn-call {
+      background-color: #2563eb;
+      color: #ffffff;
+    }
+    .c-btn-call:hover {
+      background-color: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    .c-btn-sms {
+      background-color: #ffffff;
+      color: #1a1a1a;
+      border: 1px solid #d1d5db;
+    }
+    .c-btn-sms:hover {
+      background-color: #f3f4f6;
+      transform: translateY(-1px);
+    }
+
+    /* =========================================================
+       3. 이미지 클릭 확대 모달 (Lightbox Modal)
+       ========================================================= */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+      box-shadow: 0 0 30px rgba(0, 173, 239, 0.3);
+      object-fit: contain;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+
+    .modal-close:hover {
+      color: var(--mb-accent);
+    }
 
     /* 반응형 스타일 조정 */
     @media (max-width: 992px) {
       .lineup-container, .wheel-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-      .feature-split-row, .space-section {
+      .feature-split-row, .space-section, .color-controls, .color-preview-container {
         grid-template-columns: 1fr;
       }
       .feature-split-img {
         height: 250px;
       }
+      .color-preview-box {
+        height: 220px;
+      }
     }
 
     @media (max-width: 650px) {
-      .top-detail-grid, .cockpit-sub-grid, .lineup-container, .wheel-grid, .compare-container, .grid-common, .color-row {
+      .top-detail-grid, .cockpit-sub-grid, .lineup-container, .wheel-grid, .compare-container, .grid-common {
         grid-template-columns: 1fr;
       }
-      .cta-card {
+      .consult-bottom-row {
         flex-direction: column;
         align-items: flex-start;
-        gap: 1rem;
+      }
+      .consult-btn-group {
+        width: 100%;
+      }
+      .c-btn {
+        flex: 1;
+        text-align: center;
       }
       .benefit-card {
         flex-direction: column;
@@ -844,7 +1016,7 @@
 
   <!-- 대표 메인 비주얼 -->
   <section class="hero">
-    <img src="images/hero-main.jpg" alt="THE ALL-NEW ELECTRIC GLC Front View" class="hero-img">
+    <img src="images/hero-main.jpg" alt="THE ALL-NEW ELECTRIC GLC Front View" class="hero-img clickable-img">
     <div class="hero-gradient-overlay"></div>
     <div class="hero-overlay">
       <h2>THE ALL-NEW ELECTRIC GLC</h2>
@@ -857,9 +1029,9 @@
     <!-- 1. 최상단 디테일 3분할 카운터 컷 -->
     <section class="top-detail-grid">
       <div class="top-detail-card">
-        <div class="img-wrapper img-placeholder">
+        <div class="img-placeholder img-wrapper">
           <span>[사진: 아이코닉 그릴]</span>
-          <img src="images/detail-grille.jpg" alt="아이코닉 그릴" onerror="this.style.display='none'">
+          <img src="images/detail-grille.jpg" alt="아이코닉 그릴" class="clickable-img" onerror="this.style.display='none'">
         </div>
         <div class="top-detail-info">
           <h4>일루미네이티드 아이코닉 그릴</h4>
@@ -867,9 +1039,9 @@
       </div>
 
       <div class="top-detail-card">
-        <div class="img-wrapper img-placeholder">
+        <div class="img-placeholder img-wrapper">
           <span>[사진: 디지털 라이트]</span>
-          <img src="images/detail-light.jpg" alt="디지털 라이트" onerror="this.style.display='none'">
+          <img src="images/detail-light.jpg" alt="디지털 라이트" class="clickable-img" onerror="this.style.display='none'">
         </div>
         <div class="top-detail-info">
           <h4>130만 화소 디지털 라이트</h4>
@@ -877,12 +1049,12 @@
       </div>
 
       <div class="top-detail-card">
-        <div class="img-wrapper img-placeholder">
-          <span>[사진: 발광 도어실]</span>
-          <img src="images/detail-doorsill.jpg" alt="발광 도어실" onerror="this.style.display='none'">
+        <div class="img-placeholder img-wrapper">
+          <span>[사진: 플러시 도어 핸들]</span>
+          <img src="images/detail-doorsill.jpg" alt="플러시 도어 핸들" class="clickable-img" onerror="this.style.display='none'">
         </div>
         <div class="top-detail-info">
-          <h4>발광 도어 실 패널 & 로고 빔</h4>
+          <h4>플러시 도어 핸들</h4>
         </div>
       </div>
     </section>
@@ -892,7 +1064,7 @@
       <div class="feature-split-row">
         <div class="img-placeholder feature-split-img">
           <span>[사진: GLC EV 측후면 메인 컷]</span>
-          <img src="images/ext-sideview.jpg" alt="GLC EV 측면" onerror="this.style.display='none'">
+          <img src="images/ext-sideview.jpg" alt="GLC EV 측면" class="clickable-img" onerror="this.style.display='none'">
         </div>
         <div class="feature-split-text">
           <span class="section-tag">EXTERIOR DESIGN</span>
@@ -984,7 +1156,7 @@
         <div class="wheel-card">
           <div class="img-placeholder wheel-img">
             <span>[20″ RRM]</span>
-            <img src="images/wheel-20-rrm.jpg" alt="20인치 RRM 휠" onerror="this.style.display='none'">
+            <img src="images/wheel-20-rrm.jpg" alt="20인치 RRM 휠" class="clickable-img" onerror="this.style.display='none'">
           </div>
           <h5>GLC 300 4MATIC</h5>
           <span>20인치 (RRM)</span>
@@ -993,7 +1165,7 @@
         <div class="wheel-card">
           <div class="img-placeholder wheel-img">
             <span>[20″ RRN]</span>
-            <img src="images/wheel-20-rrn.jpg" alt="20인치 RRN 휠" onerror="this.style.display='none'">
+            <img src="images/wheel-20-rrn.jpg" alt="20인치 RRN 휠" class="clickable-img" onerror="this.style.display='none'">
           </div>
           <h5>AMG Line</h5>
           <span>20인치 AMG (RRN)</span>
@@ -1002,7 +1174,7 @@
         <div class="wheel-card">
           <div class="img-placeholder wheel-img">
             <span>[20″ RVQ]</span>
-            <img src="images/wheel-20-rvq.jpg" alt="20인치 RVQ 휠" onerror="this.style.display='none'">
+            <img src="images/wheel-20-rvq.jpg" alt="20인치 RVQ 휠" class="clickable-img" onerror="this.style.display='none'">
           </div>
           <h5>AMG Line+ ⭐</h5>
           <span>20인치 멀티스포크 (RVQ)</span>
@@ -1011,7 +1183,7 @@
         <div class="wheel-card">
           <div class="img-placeholder wheel-img">
             <span>[21″ RWD]</span>
-            <img src="images/wheel-21-rwd.jpg" alt="21인치 RWD 휠" onerror="this.style.display='none'">
+            <img src="images/wheel-21-rwd.jpg" alt="21인치 RWD 휠" class="clickable-img" onerror="this.style.display='none'">
           </div>
           <h5>GLC 400 4MATIC</h5>
           <span>21인치 AMG (RWD)</span>
@@ -1026,18 +1198,16 @@
         <h2 class="section-title">운전석을 감싸는 디지털 콕핏</h2>
       </div>
       
-      <!-- 대형 메인 비주얼 -->
       <div class="img-placeholder hero-banner-box">
         <span>[사진: 39.1인치 MBUX 하이퍼스크린 파노라마 뷰]</span>
-        <img src="images/cockpit-hyperscreen.jpg" alt="MBUX 하이퍼스크린" onerror="this.style.display='none'">
+        <img src="images/cockpit-hyperscreen.jpg" alt="MBUX 하이퍼스크린" class="clickable-img" onerror="this.style.display='none'">
       </div>
 
-      <!-- 하단 3개 보조 카드 -->
       <div class="cockpit-sub-grid">
         <div class="cockpit-sub-card">
           <div class="img-placeholder img-wrapper">
             <span>[AR 내비]</span>
-            <img src="images/cockpit-ar-nav.jpg" alt="증강현실 내비" onerror="this.style.display='none'">
+            <img src="images/cockpit-ar-nav.jpg" alt="증강현실 내비" class="clickable-img" onerror="this.style.display='none'">
           </div>
           <h4>AR 증강현실 내비게이션</h4>
           <p>전방 실사 카메라에 주행 가이드와 도로 정보를 직관적으로 투영합니다.</p>
@@ -1046,7 +1216,7 @@
         <div class="cockpit-sub-card">
           <div class="img-placeholder img-wrapper">
             <span>[파노라믹 루프]</span>
-            <img src="images/cockpit-panoramic-roof.jpg" alt="파노라믹 루프" onerror="this.style.display='none'">
+            <img src="images/cockpit-panoramic-roof.jpg" alt="파노라믹 루프" class="clickable-img" onerror="this.style.display='none'">
           </div>
           <h4>일루미네이티드 파노라믹 루프</h4>
           <p>162개의 삼각별 패턴 조명이 은하수 연출로 최상급 인테리어를 완성합니다.</p>
@@ -1055,7 +1225,7 @@
         <div class="cockpit-sub-card">
           <div class="img-placeholder img-wrapper">
             <span>[MB.DRIVE]</span>
-            <img src="images/cockpit-mbdrive.jpg" alt="MB.DRIVE 어시스트" onerror="this.style.display='none'">
+            <img src="images/cockpit-mbdrive.jpg" alt="MB.DRIVE 어시스트" class="clickable-img" onerror="this.style.display='none'">
           </div>
           <h4>MB.드라이브 어시스트 패키지</h4>
           <p>차세대 MB.OS 기반의 정밀하고 안정적인 반자율 주행 경험을 전합니다.</p>
@@ -1074,7 +1244,7 @@
           <h4>GLC 300 AMG Line (9,000만원)</h4>
           <div class="img-placeholder compare-img">
             <span>[사진 위치: AMG Line 외관 & RRN 휠]</span>
-            <img src="images/compare-amg-line.jpg" alt="AMG Line 외관" onerror="this.style.display='none'">
+            <img src="images/compare-amg-line.jpg" alt="AMG Line 외관" class="clickable-img" onerror="this.style.display='none'">
           </div>
           <ul>
             <li>20인치 AMG 5-스포크 알로이 휠 (RRN)</li>
@@ -1088,7 +1258,7 @@
           <h4>GLC 300 AMG Line+ (9,480만원) ⭐ 인기 추천</h4>
           <div class="img-placeholder compare-img">
             <span>[사진 위치: AMG Line+ 외관 & RVQ 휠]</span>
-            <img src="images/compare-amg-plus.jpg" alt="AMG Line+ 외관" onerror="this.style.display='none'">
+            <img src="images/compare-amg-plus.jpg" alt="AMG Line+ 외관" class="clickable-img" onerror="this.style.display='none'">
           </div>
           <ul>
             <li>20인치 멀티 스포크 AMG 프리미엄 휠 (RVQ)</li>
@@ -1105,11 +1275,11 @@
       <div class="space-gallery">
         <div class="img-placeholder space-gallery-img">
           <span>[사진: 2열 좌석 및 가죽 마감]</span>
-          <img src="images/space-rear-seat.jpg" alt="2열 시트" onerror="this.style.display='none'">
+          <img src="images/space-rear-seat.jpg" alt="2열 시트" class="clickable-img" onerror="this.style.display='none'">
         </div>
         <div class="img-placeholder space-gallery-img">
           <span>[사진: 트렁크 & 프렁크 적재 공간]</span>
-          <img src="images/space-trunk.jpg" alt="적재 공간" onerror="this.style.display='none'">
+          <img src="images/space-trunk.jpg" alt="적재 공간" class="clickable-img" onerror="this.style.display='none'">
         </div>
       </div>
       <div class="space-info">
@@ -1127,49 +1297,49 @@
         <h2 class="section-title">익스테리어 & 인테리어 컬러 선택</h2>
       </div>
       
-      <div class="color-group-container">
-        
-        <!-- [1] 외장 익스테리어 페인트 ROW (스크린샷 8종) -->
-        <div class="color-row">
-          <div class="color-info-left">
-            <h3>• 외장 익스테리어 페인트 (Exterior Colors)</h3>
-            <div class="color-palette" id="ext-palette">
-              <div class="color-chip active" style="background:#f5f5f7;" data-color-name="149U - 폴라 화이트" data-img-src="images/ext-149u.jpg"></div>
-              <div class="color-chip" style="background:#111111;" data-color-name="197U - 옵시디안 블랙" data-img-src="images/ext-197u.jpg"></div>
-              <div class="color-chip" style="background:#9a9eab;" data-color-name="689U - 라벤더 실버" data-img-src="images/ext-689u.jpg"></div>
-              <div class="color-chip" style="background:#2b5c8f;" data-color-name="809U - 시어 블루" data-img-src="images/ext-809u.jpg"></div>
-              <div class="color-chip" style="background:#3b4b5b;" data-color-name="842U - 소달라이트 블루" data-img-src="images/ext-842u.jpg"></div>
-              <div class="color-chip" style="background:#c5c8cc;" data-color-name="922U - 하이 테크 실버" data-img-src="images/ext-922u.jpg"></div>
-              <div class="color-chip" style="background:#7e8285;" data-color-name="956U - MANUFAKTUR 알파인 그레이" data-img-src="images/ext-956u.jpg"></div>
-              <div class="color-chip" style="background:#eaeaea;" data-color-name="885U - MANUFAKTUR 오팔라이트 화이트" data-img-src="images/ext-885u.jpg"></div>
-            </div>
-            <div class="selected-color-title" id="ext-selected-text">선택: 149U - 폴라 화이트</div>
+      <div class="color-controls">
+        <div class="color-control-group">
+          <h3>• 외장 익스테리어 페인트 (Exterior Colors)</h3>
+          <div class="color-palette" id="ext-palette">
+            <div class="color-chip active" style="background:#f5f5f7;" data-color-name="149U - 폴라 화이트" data-img-src="images/ext-149u.jpg"></div>
+            <div class="color-chip" style="background:#111111;" data-color-name="197U - 옵시디안 블랙" data-img-src="images/ext-197u.jpg"></div>
+            <div class="color-chip" style="background:#9a9eab;" data-color-name="689U - 라벤더 실버" data-img-src="images/ext-689u.jpg"></div>
+            <div class="color-chip" style="background:#2b5c8f;" data-color-name="809U - 시어 블루" data-img-src="images/ext-809u.jpg"></div>
+            <div class="color-chip" style="background:#3b4b5b;" data-color-name="842U - 소달라이트 블루" data-img-src="images/ext-842u.jpg"></div>
+            <div class="color-chip" style="background:#c5c8cc;" data-color-name="922U - 하이 테크 실버" data-img-src="images/ext-922u.jpg"></div>
+            <div class="color-chip" style="background:#7e8285;" data-color-name="956U - MANUFAKTUR 알파인 그레이" data-img-src="images/ext-956u.jpg"></div>
+            <div class="color-chip" style="background:#eaeaea;" data-color-name="885U - MANUFAKTUR 오팔라이트 화이트" data-img-src="images/ext-885u.jpg"></div>
           </div>
-          
+          <div class="selected-color-title" id="ext-selected-text">외장: 149U - 폴라 화이트</div>
+        </div>
+
+        <div class="color-control-group">
+          <h3>• 인테리어 시트 & 가죽 (Interior Upholstery)</h3>
+          <div class="color-palette" id="int-palette">
+            <div class="color-chip active" style="background:#1a1a1a;" data-color-name="블랙" data-img-src="images/int-black.jpg"></div>
+            <div class="color-chip" style="background:#7b4a2b;" data-color-name="비치 브라운 / 블랙" data-img-src="images/int-sienna-brown.jpg"></div>
+            <div class="color-chip" style="background:#e3d7c5;" data-color-name="아이보리 베이지 / 블랙" data-img-src="images/int-beige.jpg"></div>
+          </div>
+          <div class="selected-color-title" id="int-selected-text">내장: 블랙</div>
+        </div>
+      </div>
+
+      <div class="color-preview-container">
+        <div class="preview-wrapper">
+          <span class="preview-label">익스테리어 뷰</span>
           <div class="img-placeholder color-preview-box">
             <span>[외장 차량 사진]</span>
-            <img id="ext-preview-img" src="images/ext-149u.jpg" alt="외장 차량 사진" onerror="this.style.display='none'">
+            <img id="ext-preview-img" src="images/ext-149u.jpg" alt="외장 차량 사진" class="clickable-img" onerror="this.style.display='none'">
           </div>
         </div>
 
-        <!-- [2] 인테리어 시트 & 가죽 ROW (3종) -->
-        <div class="color-row">
-          <div class="color-info-left">
-            <h3>• 인테리어 시트 & 가죽 (Interior Upholstery)</h3>
-            <div class="color-palette" id="int-palette">
-              <div class="color-chip active" style="background:#1a1a1a;" data-color-name="블랙" data-img-src="images/int-black.jpg"></div>
-              <div class="color-chip" style="background:#7b4a2b;" data-color-name="비치 브라운 / 블랙" data-img-src="images/int-sienna-brown.jpg"></div>
-              <div class="color-chip" style="background:#e3d7c5;" data-color-name="아이보리 베이지 / 블랙" data-img-src="images/int-beige.jpg"></div>
-            </div>
-            <div class="selected-color-title" id="int-selected-text">선택: 블랙</div>
-          </div>
-
+        <div class="preview-wrapper">
+          <span class="preview-label">인테리어 뷰</span>
           <div class="img-placeholder color-preview-box">
             <span>[인테리어 시트 사진]</span>
-            <img id="int-preview-img" src="images/int-black.jpg" alt="인테리어 시트 사진" onerror="this.style.display='none'">
+            <img id="int-preview-img" src="images/int-black.jpg" alt="인테리어 시트 사진" class="clickable-img" onerror="this.style.display='none'">
           </div>
         </div>
-
       </div>
 
       <div class="color-summary-bar">
@@ -1186,7 +1356,7 @@
       <div class="benefit-card">
         <div class="img-placeholder benefit-img">
           <span>[사진 위치: MB.CHARGE 충전기]</span>
-          <img src="images/infra-mb-charge.jpg" alt="MB.CHARGE 충전 서비스" onerror="this.style.display='none'">
+          <img src="images/infra-mb-charge.jpg" alt="MB.CHARGE 충전 서비스" class="clickable-img" onerror="this.style.display='none'">
         </div>
         <div class="benefit-info">
           <h3>전국 단일 요금제 & 1년 무상 지원 (Public PLUS)</h3>
@@ -1533,22 +1703,48 @@
       </div>
     </section>
 
-    <!-- 하단 CTA & 사전계약 안내 -->
-    <div class="cta-card">
-      <div class="cta-text">
-        <h3>디 올-뉴 일렉트릭 GLC 사전계약 진행 중</h3>
-        <p>계약금 300만원 | 출고 고객 MB.CHARGE Public PLUS 1년 무상 지원 | 2026년 4분기 순차 인도</p>
+    <!-- 13. [요청 반영] 최하단 상담 안내 & 사전계약 CTA 카드 -->
+    <section class="consult-card">
+      <div class="consult-header">
+        <div class="consult-title-row">
+          <span>📢</span>
+          <h3>맞춤형 견적 및 시승 상담 안내 (사전계약 진행 중)</h3>
+        </div>
+        <p class="consult-subtext">
+          전국 최고의 조건과 맞춤 금융 설계를 친절하게 도와드리겠습니다.<br>
+          • <strong>사전계약 조건:</strong> 계약금 300만원 | 출고 고객 MB.CHARGE Public PLUS 1년 무상 지원 | 2026년 4분기 순차 인도
+        </p>
       </div>
-      <div class="cta-buttons">
-        <a href="https://open.kakao.com/" target="_blank" class="btn btn-kakao">카카오톡 문의</a>
-        <a href="tel:01093790999" class="btn btn-call">전화 상담 (010-9379-0999)</a>
+
+      <hr class="consult-divider">
+
+      <div class="consult-bottom-row">
+        <div class="advisor-details">
+          <span class="advisor-name">메르세데스-벤츠 포항전시장 <strong>김석현 과장</strong></span>
+          <a href="tel:01093790999" class="advisor-phone">
+            📞 010-9379-0999
+          </a>
+        </div>
+
+        <div class="consult-btn-group">
+          <a href="https://open.kakao.com/" target="_blank" class="c-btn c-btn-kakao">💬 카카오톡 문의</a>
+          <a href="tel:01093790999" class="c-btn c-btn-call">전화 문의</a>
+          <a href="sms:01093790999" class="c-btn c-btn-sms">문자 문의</a>
+        </div>
       </div>
-    </div>
+    </section>
 
   </main>
 
-  <!-- 컬러 선택 시 이미지/텍스트 동적 업데이트 자바스크립트 -->
+  <!-- 이미지 클릭 시 대형 팝업 모달 HTML -->
+  <div class="modal-overlay" id="imageModal">
+    <span class="modal-close" id="modalClose">&times;</span>
+    <img class="modal-content" id="modalImg" src="" alt="확대 이미지">
+  </div>
+
+  <!-- 자바스크립트 -->
   <script>
+    // 1. 컬러 커스텀 스크립트
     let activeExtName = "149U - 폴라 화이트";
     let activeIntName = "블랙";
 
@@ -1570,7 +1766,7 @@
         activeExtName = this.getAttribute('data-color-name');
         const imgSrc = this.getAttribute('data-img-src');
 
-        extSelectedText.innerText = `선택: ${activeExtName}`;
+        extSelectedText.innerText = `외장: ${activeExtName}`;
         if (imgSrc) {
           extPreviewImg.src = imgSrc;
           extPreviewImg.style.display = 'block';
@@ -1588,7 +1784,7 @@
         activeIntName = this.getAttribute('data-color-name');
         const imgSrc = this.getAttribute('data-img-src');
 
-        intSelectedText.innerText = `선택: ${activeIntName}`;
+        intSelectedText.innerText = `내장: ${activeIntName}`;
         if (imgSrc) {
           intPreviewImg.src = imgSrc;
           intPreviewImg.style.display = 'block';
@@ -1601,6 +1797,25 @@
     function updateSummary() {
       totalColorText.innerText = `${activeExtName} / ${activeIntName}`;
     }
+
+    // 2. 모든 이미지 클릭 시 팝업 확대 스크립트
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalClose = document.getElementById('modalClose');
+
+    document.querySelectorAll('.clickable-img').forEach(img => {
+      img.addEventListener('click', function() {
+        if (this.src && this.style.display !== 'none') {
+          modal.classList.add('active');
+          modalImg.src = this.src;
+        }
+      });
+    });
+
+    modalClose.addEventListener('click', () => modal.classList.remove('active'));
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.remove('active');
+    });
   </script>
 </body>
 </html>
