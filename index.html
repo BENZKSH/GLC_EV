@@ -800,6 +800,62 @@
       padding-bottom: 0.5rem;
     }
 
+    /* [추가] 카탈로그 다운로드 섹션 스타일 */
+    .catalog-download-section {
+      background: linear-gradient(135deg, #141c29 0%, #121316 100%);
+      border: 1px solid var(--mb-border);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      margin-bottom: 3.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .catalog-info h3 {
+      font-size: 1.25rem;
+      color: var(--mb-white);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .catalog-info p {
+      font-size: 0.88rem;
+      color: var(--mb-silver);
+      line-height: 1.5;
+    }
+
+    .catalog-btn-group {
+      display: flex;
+      gap: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    .c-btn-catalog {
+      background-color: var(--mb-accent);
+      color: var(--mb-black);
+      font-weight: 700;
+      border: none;
+    }
+    .c-btn-catalog:hover {
+      background-color: #0098d4;
+      transform: translateY(-1px);
+    }
+
+    .c-btn-outline {
+      background-color: transparent;
+      color: var(--mb-white);
+      border: 1px solid var(--mb-border);
+    }
+    .c-btn-outline:hover {
+      border-color: var(--mb-accent);
+      background-color: rgba(0, 173, 239, 0.05);
+      transform: translateY(-1px);
+    }
+
     /* [12. 하단 상담 / 사전계약 CTA 배너] */
     .consult-card {
       background: linear-gradient(135deg, #141821 0%, #0a0b0d 100%);
@@ -1012,6 +1068,14 @@
       }
       .color-preview-box {
         height: 220px;
+      }
+      .catalog-download-section {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .catalog-btn-group {
+        width: 100%;
+        flex-direction: column;
       }
     }
 
@@ -1575,6 +1639,28 @@
             </tr>
           </tbody>
         </table>
+      </div>
+    </section>
+
+    <!-- [추가] 카탈로그 및 가격표 다운로드 섹션 -->
+    <section class="catalog-download-section">
+      <div class="catalog-info">
+        <span class="section-tag">OFFICIAL CATALOG</span>
+        <h3>THE ALL-NEW ELECTRIC GLC 카탈로그 및 가격표</h3>
+        <p>국내 출시 4종 라인업의 상세 제원, 옵션 패키지 및 컬러 정보를 담은 공식 브로슈어와 가격표를 다운로드하세요.</p>
+      </div>
+      <div class="catalog-btn-group">
+        <a href="https://www.mercedes-benz.co.kr/content/dam/south-korea/passenger-cars/model/catalog/2026/The%20all-new%20electric%20GLC_catalogue_20260709.pdf" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="c-btn c-btn-catalog">
+          📥 공식 카탈로그 다운로드
+        </a>
+        <a href="images/glc_pricelist.jpg" 
+           download="electric_GLC_MY27_가격표제원표.jpg" 
+           class="c-btn c-btn-outline">
+          📊 가격표 & 제원표 다운로드
+        </a>
       </div>
     </section>
 
